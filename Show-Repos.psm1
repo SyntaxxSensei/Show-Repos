@@ -55,6 +55,7 @@ function Select-Repo
     $settingsFile = ""
     $settingsData = ""
     $gitDirectories = @()
+    $count = 1
 
     try
     {
@@ -73,8 +74,9 @@ function Select-Repo
 
         for ($i = 0; $i -lt $directories.Length; $i++)
         {
-            $newObject = @{ID = $i; Directory = $directories[$i] -replace $gitDirectoryName, ""}
+            $newObject = @{ID = $count; Directory = $directories[$i] -replace $gitDirectoryName, ""}
             $gitDirectories += $newObject
+            $count++
         }
     }
 
